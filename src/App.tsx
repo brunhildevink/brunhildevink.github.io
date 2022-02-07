@@ -7,16 +7,18 @@ import './styles/reset.css'
 
 const App: React.FC = () => {
   return (
-    <Router>
-      <Routes>
-        <Route path="/" element={<Home />} />
-      </Routes>
-    </Router>
+    <Wrapper>
+      <Router>
+        <Routes>
+          <Route path="/" element={<Home />} />
+        </Routes>
+      </Router>
+    </Wrapper>
   )
 }
 
 export default App
 
 const Wrapper = styled.div`
-  height: 100%;
+  height: 100vh;
 `
