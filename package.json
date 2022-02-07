@@ -19,7 +19,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test --coverage --collectCoverageFrom=./src/**.tsx --watchPathIgnorePatterns=.src/index.tsx",
+    "test": "react-scripts test --coverage --watchAll --collectCoverageFrom=./src/**.tsx --watchPathIgnorePatterns=.src/index.tsx",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
@@ -49,5 +49,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "jest-watch-typeahead": "^0.6.5"
   }
 }
