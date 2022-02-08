@@ -44,7 +44,7 @@
   },
   "jest": {
     "collectCoverageFrom": [
-      "**.tsx"
+      "src/components/**"
     ],
     "watchPathIgnorePatterns": [
       "./src/index.tsx",

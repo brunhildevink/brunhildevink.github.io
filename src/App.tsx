@@ -1,13 +1,15 @@
 import React from 'react'
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
-import styled from 'styled-components'
+import styled, { createGlobalStyle } from 'styled-components'
 
 import { Home } from './pages'
+import { colors } from './styles'
 import './styles/reset.css'
 
 const App: React.FC = () => {
   return (
     <Wrapper>
+      <GlobalStyle />
       <Router>
         <Routes>
           <Route path="/" element={<Home />} />
@@ -19,6 +21,11 @@ const App: React.FC = () => {
 
 export default App
 
-const Wrapper = styled.div`
-  height: 100vh;
+const Wrapper = styled.div``
+
+const GlobalStyle = createGlobalStyle`
+  body {
+    background: ${colors.black};
+    height: 100vh;
+  }
 `
