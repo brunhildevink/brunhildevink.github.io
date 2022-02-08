@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 
 import { Terminal } from '../../components'
-import { colors, font } from '../../styles'
+import { font } from '../../styles'
 
 const Home: React.FC = () => {
   return (
