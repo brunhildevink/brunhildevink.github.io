@@ -44,10 +44,11 @@
   },
   "jest": {
     "collectCoverageFrom": [
-      "./src/**.tsx"
+      "**.tsx"
     ],
     "watchPathIgnorePatterns": [
-      "./src/index.tsx"
+      "./src/index.tsx",
+      "./src/App.tsx"
     ]
   },
   "devDependencies": {
