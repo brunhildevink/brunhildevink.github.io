@@ -1,12 +1,12 @@
 import React from 'react'
 import styled from 'styled-components'
-import { colors, font } from '../../styles'
+import { colors, font, typography } from '../../styles'
 
 const Input: React.FC = () => {
   return (
     <Container>
       <NewLineIcon>{'~'}</NewLineIcon>
-      <InputField aria-label="terminal input field" />
+      <InputField autoFocus aria-label="terminal input field" />
     </Container>
   )
 }
@@ -18,7 +18,6 @@ const Container = styled.div`
   grid-template-columns: auto 1fr;
   grid-gap: 8px;
   height: 100%;
-  padding: 8px;
 `
 
 const NewLineIcon = styled.span`
@@ -40,6 +39,7 @@ const InputField = styled.textarea`
   width: 100%;
   height: 100%;
   font-family: ${font};
+  font-size: ${typography.fontSizeText}px;
   color: ${colors.white};
 
   &:before {

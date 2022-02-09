@@ -27,5 +27,11 @@ const GlobalStyle = createGlobalStyle`
   body {
     background: ${colors.black};
     height: 100vh;
+
+    * {
+      -moz-box-sizing: border-box;
+      -webkit-box-sizing: border-box;
+      box-sizing: border-box;
+    }
   }
 `

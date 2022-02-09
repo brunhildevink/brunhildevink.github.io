@@ -25,7 +25,7 @@ const Container = styled.div`
   grid-template-columns: 1fr 1fr 1fr;
   align-items: center;
   width: 100%;
-  height: 20px;
+  height: 24px;
   background: ${colors.lightGrey};
   border: 1px solid ${colors.ashGrey};
   border-bottom: 0px transparent;
@@ -35,7 +35,6 @@ const Container = styled.div`
 `
 
 const ButtonContainer = styled.div`
-  height: 100%;
   margin-left: 8px;
 `
 
