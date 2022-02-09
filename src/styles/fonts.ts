@@ -1,3 +1,3 @@
-const fonts = '"Roboto Mono", monospace'
+const fonts = '"IBM Plex Mono", monospace'
 
 export default fonts
