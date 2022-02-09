@@ -1,14 +1,16 @@
 import React from 'react'
 import styled from 'styled-components'
 
-import { TopBar } from '..'
+import { Input, TopBar } from '..'
 import { colors } from '../../styles'
 
 const Terminal: React.FC = () => {
   return (
     <Wrapper>
       <TopBar />
-      <Container />
+      <Container>
+        <Input />
+      </Container>
     </Wrapper>
   )
 }
