@@ -31,7 +31,8 @@ export default ResponseText
 
 const Container = styled.p<{ color: string }>`
   font-family: ${font};
-  color: ${({ color }) => color};
   font-size: ${typography.fontSizeText}px;
+  font-weight: ${typography.fontWeightMedium};
+  color: ${({ color }) => color};
   margin-bottom: 12px;
 `

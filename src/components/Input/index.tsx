@@ -6,7 +6,7 @@ const Input: React.FC = () => {
   return (
     <Container>
       <NewLineIcon>{'~'}</NewLineIcon>
-      <InputField autoFocus aria-label="terminal input field" />
+      <InputField autoFocus aria-label="terminal input field" spellCheck="false" />
     </Container>
   )
 }
@@ -20,8 +20,11 @@ const Container = styled.div`
   height: 100%;
 `
 
-const NewLineIcon = styled.span`
-  color: ${colors.menuYellow};
+const NewLineIcon = styled.p`
+  color: ${colors.white};
+  font-weight: ${typography.fontWeightBold};
+  font-size: ${typography.fontSizeText}px;
+  margin-top: 4px;
 `
 
 const InputField = styled.textarea`
@@ -30,6 +33,7 @@ const InputField = styled.textarea`
   background-color: transparent;
   box-shadow: none;
   resize: none;
+  overflow-y: hidden;
 
   &:focus {
     outline: none;
@@ -40,6 +44,7 @@ const InputField = styled.textarea`
   height: 100%;
   font-family: ${font};
   font-size: ${typography.fontSizeText}px;
+  font-weight: ${typography.fontWeightMedium};
   color: ${colors.white};
 
   &:before {
