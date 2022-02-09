@@ -1,9 +1,9 @@
 import React, { useEffect, useState, useRef } from 'react'
 import styled from 'styled-components'
-import { font, typography } from '../../styles'
+import { colors, font, typography } from '../../styles'
 
 interface Props {
-  color: string
+  color?: string
   delay?: number
   text: string
 }
@@ -21,7 +21,7 @@ const ResponseText: React.FC<Props> = ({ color, delay, text }) => {
   }, [])
 
   if (shouldShow) {
-    return <Container color={color}>{text}</Container>
+    return <Container color={color || colors.white}>{text}</Container>
   } else {
     return <></>
   }

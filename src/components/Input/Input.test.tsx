@@ -5,7 +5,7 @@ import Input from '.'
 
 describe('Input test', () => {
   test('Input loads', () => {
-    const { container } = render(<Input />)
+    const { container } = render(<Input onSubmit={() => console.log('test')} />)
     const element = container.querySelector('textarea')
     expect(element).toBeInTheDocument()
   })

@@ -1,24 +1,31 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components'
 
-import { Input, TopBar } from '..'
+import { Input, TopBar, ResponseText } from '..'
 import { colors } from '../../styles'
-import ResponseText from '../ResponseText'
+import responseDataApi from '../../api'
+import { returnResponseData } from '../../utils'
+import { responseData } from '../../types'
 
 const Terminal: React.FC = () => {
+  const [data, setData] = useState<responseData[]>(responseDataApi)
+
+  const renderResponses = data.map((response, index) => (
+    <ResponseText color={response.color} delay={response.delay} key={index} text={response.text} />
+  ))
+
+  const handleResponse = (input: string) => {
+    const newData = [...data]
+    newData.push(returnResponseData(input))
+    setData(newData)
+  }
+
   return (
     <Wrapper>
       <TopBar />
       <Container>
-        <ResponseText color={colors.menuRed} text="Busy compiling..." />
-        <ResponseText color={colors.menuGreen} delay={2000} text="Compiled successfully!" />
-        <ResponseText
-          color={colors.menuYellow}
-          delay={3000}
-          text="Start navigating the website by typing the following commands:"
-        />
-        <ResponseText color={colors.menuYellow} delay={3000} text="[About me, Projects, Social links]" />
-        <Input />
+        {renderResponses}
+        <Input onSubmit={handleResponse} />
       </Container>
     </Wrapper>
   )
