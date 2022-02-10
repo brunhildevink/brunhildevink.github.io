@@ -16,7 +16,7 @@ const returnResponseData = (input: string) => {
     color: colors.menuYellow,
     delay: 500,
     text: response,
-    type: responseType.RESPONSE,
+    type: responseType.OUTPUT,
   }
 
   return data

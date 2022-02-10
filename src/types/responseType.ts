@@ -1,6 +1,6 @@
 enum responseType {
   'INPUT',
-  'RESPONSE',
+  'OUTPUT',
 }
 
 export default responseType
