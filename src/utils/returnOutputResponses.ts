@@ -12,7 +12,7 @@ const returnOutputResponses = (input: string) => {
   } else if (input.length === 0) {
     response = ''
   } else if (input.toLowerCase() === 'projects') {
-    response = 'I will display some of my projects on here in the near future. Please keep an eye out for them!'
+    response = 'I will display some of my projects on here in the near future. Stay tuned!'
   } else if (input.toLowerCase().includes('hello') || input.toLowerCase().includes('hi')) {
     response = 'hello! :)'
   } else {
@@ -26,7 +26,7 @@ const returnOutputResponses = (input: string) => {
       type: OutputType.INPUT,
     },
     {
-      color: colors.menuYellow,
+      color: colors.white,
       delay: 500,
       text: response,
       type: OutputType.OUTPUT,
