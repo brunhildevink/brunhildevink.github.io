@@ -1,4 +1,4 @@
-import React, { KeyboardEvent, useEffect, useState, useRef } from 'react'
+import React, { KeyboardEvent, useState } from 'react'
 import styled from 'styled-components'
 import { colors, font, typography } from '../../styles'
 
@@ -8,15 +8,8 @@ interface Props {
 
 const Input: React.FC<Props> = ({ onSubmit }) => {
   const [textAreaValue, setTextAreaValue] = useState<string>('')
-  const inputRef = useRef<HTMLInputElement>(null)
 
-  useEffect(() => {
-    if (inputRef && inputRef.current) {
-      inputRef.current.focus()
-    }
-  }, [])
-
-  const handleUserKeyPress = (event: KeyboardEvent<HTMLInputElement>) => {
+  const handleUserKeyPress = (event: KeyboardEvent<HTMLTextAreaElement>) => {
     if (event.key === 'Enter' && !event.shiftKey) {
       event.preventDefault()
       onSubmit(textAreaValue)
@@ -27,15 +20,13 @@ const Input: React.FC<Props> = ({ onSubmit }) => {
   return (
     <Container>
       <NewLineIcon>{'~'}</NewLineIcon>
-      <InputField
+      <TextArea
         aria-label="terminal input field"
-        autoFocus={true}
+        autoFocus
         name="terminal-input"
         onChange={(event) => setTextAreaValue(event.target.value)}
         onKeyPress={(event) => handleUserKeyPress(event)}
-        ref={inputRef}
         spellCheck="false"
-        type="text"
         value={textAreaValue}
       />
     </Container>
@@ -48,7 +39,7 @@ const Container = styled.form`
   display: grid;
   grid-template-columns: auto 1fr;
   grid-gap: 8px;
-  align-items: center;
+  height: 100%;
 `
 
 const NewLineIcon = styled.p`
@@ -57,7 +48,7 @@ const NewLineIcon = styled.p`
   font-size: ${typography.fontSizeText}px;
 `
 
-const InputField = styled.input`
+const TextArea = styled.textarea`
   border: none;
   background-image: none;
   background-color: transparent;
@@ -71,6 +62,7 @@ const InputField = styled.input`
 
   display: inline-block;
   width: 100%;
+  height: 100%;
   font-family: ${font};
   font-size: ${typography.fontSizeText}px;
   font-weight: ${typography.fontWeightMedium};
