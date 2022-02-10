@@ -12,12 +12,19 @@ const returnResponseData = (input: string) => {
     response = 'command not found'
   }
 
-  const data: responseData = {
-    color: colors.menuYellow,
-    delay: 500,
-    text: response,
-    type: responseType.OUTPUT,
-  }
+  const data: responseData[] = [
+    {
+      color: colors.white,
+      text: input,
+      type: responseType.INPUT,
+    },
+    {
+      color: colors.menuYellow,
+      delay: 500,
+      text: response,
+      type: responseType.OUTPUT,
+    },
+  ]
 
   return data
 }

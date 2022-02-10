@@ -1,16 +1,18 @@
 import { render, screen } from '@testing-library/react'
+
 import ResponseText from '.'
+import { responseType } from '../../types'
 
 describe('ResponseText test', () => {
   test('ResponseText prop "text" equals "test" when given "test"', () => {
-    render(<ResponseText text="test" color="white" />)
+    render(<ResponseText color="white" type={responseType.OUTPUT} text="test" />)
     const element = screen.getByText('test')
     expect(element).toBeInTheDocument()
   })
 
   test('ResponseText should load in after 3000ms when prop is given a value of "3000"', async () => {
     const delay = 3000
-    render(<ResponseText text="test" color="white" delay={delay} />)
+    render(<ResponseText color="white" delay={delay} type={responseType.OUTPUT} text="test" />)
     await new Promise((r) => setTimeout(r, delay))
     const element = screen.getByText('test')
     expect(element).toBeInTheDocument()

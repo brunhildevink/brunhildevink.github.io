@@ -11,12 +11,12 @@ const Terminal: React.FC = () => {
   const [data, setData] = useState<responseData[]>(responseDataApi)
 
   const renderResponses = data.map((response, index) => (
-    <ResponseText color={response.color} delay={response.delay} key={index} text={response.text} />
+    <ResponseText color={response.color} delay={response.delay} key={index} type={response.type} text={response.text} />
   ))
 
   const handleResponse = (input: string) => {
     const newData = [...data]
-    newData.push(returnResponseData(input))
+    returnResponseData(input).forEach((response) => newData.push(response))
     setData(newData)
   }
 

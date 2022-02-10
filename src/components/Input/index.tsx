@@ -11,7 +11,9 @@ const Input: React.FC<Props> = ({ onSubmit }) => {
 
   const handleUserKeyPress = (event: KeyboardEvent<HTMLTextAreaElement>) => {
     if (event.key === 'Enter' && !event.shiftKey) {
+      event.preventDefault()
       onSubmit(textAreaValue)
+      setTextAreaValue('')
     }
   }
 
@@ -43,7 +45,6 @@ const NewLineIcon = styled.p`
   color: ${colors.white};
   font-weight: ${typography.fontWeightBold};
   font-size: ${typography.fontSizeText}px;
-  margin-top: 4px;
 `
 
 const TextArea = styled.textarea`
