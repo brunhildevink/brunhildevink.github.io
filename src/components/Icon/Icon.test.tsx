@@ -3,7 +3,7 @@
 import { render, screen } from '@testing-library/react'
 import Icon from '.'
 
-describe('Icon test', () => {
+describe('Icon component test', () => {
   test('Icon loads', () => {
     render(<Icon.Expand title="test" />)
     const element = screen.getByText('test')

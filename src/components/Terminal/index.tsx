@@ -1,24 +1,31 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components'
 
-import { Input, TopBar } from '..'
+import { Input, Output, TopBar } from '..'
 import { colors } from '../../styles'
-import ResponseText from '../ResponseText'
+import terminalOutputData from '../../api'
+import { returnOutputResponses } from '../../utils'
+import { TerminalOutput } from '../../types'
 
 const Terminal: React.FC = () => {
+  const [data, setData] = useState<TerminalOutput[]>(terminalOutputData)
+
+  const renderOutput = data.map((response, index) => (
+    <Output color={response.color} delay={response.delay} key={index} type={response.type} text={response.text} />
+  ))
+
+  const handleInputResponse = (input: string) => {
+    const newData = [...data]
+    returnOutputResponses(input).forEach((response) => newData.push(response))
+    setData(newData)
+  }
+
   return (
     <Wrapper>
       <TopBar />
       <Container>
-        <ResponseText color={colors.menuRed} text="Busy compiling..." />
-        <ResponseText color={colors.menuGreen} delay={2000} text="Compiled successfully!" />
-        <ResponseText
-          color={colors.menuYellow}
-          delay={3000}
-          text="Start navigating the website by typing the following commands:"
-        />
-        <ResponseText color={colors.menuYellow} delay={3000} text="[About me, Projects, Social links]" />
-        <Input />
+        {renderOutput}
+        <Input onSubmit={handleInputResponse} />
       </Container>
     </Wrapper>
   )

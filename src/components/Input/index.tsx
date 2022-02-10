@@ -1,33 +1,54 @@
-import React from 'react'
+import React, { KeyboardEvent, useState } from 'react'
 import styled from 'styled-components'
 import { colors, font, typography } from '../../styles'
 
-const Input: React.FC = () => {
+interface Props {
+  onSubmit: (input: string) => void
+}
+
+const Input: React.FC<Props> = ({ onSubmit }) => {
+  const [textAreaValue, setTextAreaValue] = useState<string>('')
+
+  const handleUserKeyPress = (event: KeyboardEvent<HTMLInputElement>) => {
+    if (event.key === 'Enter' && !event.shiftKey) {
+      event.preventDefault()
+      onSubmit(textAreaValue)
+      setTextAreaValue('')
+    }
+  }
+
   return (
     <Container>
       <NewLineIcon>{'~'}</NewLineIcon>
-      <InputField autoFocus aria-label="terminal input field" spellCheck="false" />
+      <InputField
+        aria-label="terminal input field"
+        autoFocus
+        name="terminal-input"
+        onChange={(event) => setTextAreaValue(event.target.value)}
+        onKeyPress={(event) => handleUserKeyPress(event)}
+        spellCheck="false"
+        value={textAreaValue}
+      />
     </Container>
   )
 }
 
 export default Input
 
-const Container = styled.div`
+const Container = styled.form`
   display: grid;
   grid-template-columns: auto 1fr;
   grid-gap: 8px;
-  height: 100%;
+  align-items: center;
 `
 
 const NewLineIcon = styled.p`
   color: ${colors.white};
   font-weight: ${typography.fontWeightBold};
   font-size: ${typography.fontSizeText}px;
-  margin-top: 4px;
 `
 
-const InputField = styled.textarea`
+const InputField = styled.input`
   border: none;
   background-image: none;
   background-color: transparent;
@@ -46,11 +67,4 @@ const InputField = styled.textarea`
   font-size: ${typography.fontSizeText}px;
   font-weight: ${typography.fontWeightMedium};
   color: ${colors.white};
-
-  &:before {
-    content: '>';
-    display: block;
-    width: 40px;
-    height: 40px;
-  }
 `

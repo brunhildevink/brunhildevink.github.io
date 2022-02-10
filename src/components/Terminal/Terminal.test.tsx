@@ -1,12 +1,13 @@
-/* eslint-disable testing-library/no-node-access */
-/* eslint-disable testing-library/no-container */
-import { render } from '@testing-library/react'
+import { render, screen } from '@testing-library/react'
+import userEvent from '@testing-library/user-event'
+
 import Terminal from '.'
 
-describe('Terminal test', () => {
-  test('Terminal loads', () => {
-    const { container } = render(<Terminal />)
-    const element = container.querySelector('div')
-    expect(element).toBeInTheDocument()
+describe('Terminal component test', () => {
+  test('Terminal handles input responses', () => {
+    render(<Terminal />)
+    const inputElement = screen.getByLabelText('terminal input field')
+    userEvent.type(inputElement, 'test input{enter}')
+    expect(screen.getByDisplayValue('test input')).toBeInTheDocument()
   })
 })
