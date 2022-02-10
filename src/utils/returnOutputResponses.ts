@@ -8,11 +8,17 @@ const returnOutputResponses = (input: string) => {
     response = "My name is Brunhilde. I'm a 27 year old developer from the Netherlands."
   } else if (input.toLowerCase() === 'social links') {
     response = 'github: brunhildevink, linkedIn: brunhilde vink'
+  } else if (input.length === 0) {
+    response = ''
+  } else if (input.toLowerCase() === 'projects') {
+    response = 'I will display some of my projects on here in the near future. Please keep an eye out for them!'
+  } else if (input.toLowerCase().includes('hello') || input.toLowerCase().includes('hi')) {
+    response = 'hello! :)'
   } else {
-    response = 'command not found'
+    response = `command not found: ${input}`
   }
 
-  const data: TerminalOutput[] = [
+  const output: TerminalOutput[] = [
     {
       color: colors.white,
       text: input,
@@ -26,7 +32,7 @@ const returnOutputResponses = (input: string) => {
     },
   ]
 
-  return data
+  return output
 }
 
 export default returnOutputResponses

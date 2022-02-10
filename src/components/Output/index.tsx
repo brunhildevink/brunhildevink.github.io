@@ -27,7 +27,7 @@ const Output: React.FC<Props> = ({ color, delay, type, text }) => {
     return (
       <Container type={type} color={color || colors.white}>
         {type === OutputType.OUTPUT ? (
-          <Text>{text}</Text>
+          <p>{text}</p>
         ) : (
           <>
             <NewLineIcon>{'~'}</NewLineIcon>
@@ -54,13 +54,13 @@ const Container = styled.div<{ type: OutputType; color: string }>`
   `}
 
   margin-bottom: 12px;
-  color: ${({ color }) => color};
-`
 
-const Text = styled.p`
-  font-family: ${font};
-  font-size: ${typography.fontSizeText}px;
-  font-weight: ${typography.fontWeightMedium};
+  > * {
+    color: ${({ color }) => color};
+    font-family: ${font};
+    font-size: ${typography.fontSizeText}px;
+    font-weight: ${typography.fontWeightRegular};
+  }
 `
 
 const Input = styled.input`
@@ -78,10 +78,6 @@ const Input = styled.input`
   display: inline-block;
   width: 100%;
   height: 100%;
-  font-family: ${font};
-  font-size: ${typography.fontSizeText}px;
-  font-weight: ${typography.fontWeightMedium};
-  color: ${colors.white};
 `
 
 const NewLineIcon = styled.p`

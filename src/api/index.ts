@@ -17,13 +17,13 @@ const terminalOutputData: TerminalOutput[] = [
   {
     color: colors.menuYellow,
     delay: 2000,
-    text: 'Start navigating the website by typing the following commands:',
+    text: 'You can now start navigating the website by typing the following commands:',
     type: OutputType.OUTPUT,
   },
   {
     color: colors.menuYellow,
     delay: 2000,
-    text: '[About me, Projects, Social links]',
+    text: '[About me], [Projects], [Social links]',
     type: OutputType.OUTPUT,
   },
 ]
