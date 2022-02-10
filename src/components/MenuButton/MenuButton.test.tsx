@@ -2,7 +2,7 @@ import { render, screen } from '@testing-library/react'
 import MenuButton from '.'
 import { Icons } from '..'
 
-describe('MenuButton test', () => {
+describe('MenuButton component test', () => {
   test('MenuButton color equals red when prop color equals "red"', () => {
     render(<MenuButton color="red" ariaLabel="test" icon={Icons.Expand} />)
     const element = screen.getByLabelText('test')

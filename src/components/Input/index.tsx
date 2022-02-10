@@ -23,6 +23,7 @@ const Input: React.FC<Props> = ({ onSubmit }) => {
       <TextArea
         aria-label="terminal input field"
         autoFocus
+        name="terminal-input"
         onChange={(event) => setTextAreaValue(event.target.value)}
         onKeyPress={(event) => handleUserKeyPress(event)}
         spellCheck="false"

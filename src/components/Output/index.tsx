@@ -31,7 +31,7 @@ const Output: React.FC<Props> = ({ color, delay, type, text }) => {
         ) : (
           <>
             <NewLineIcon>{'~'}</NewLineIcon>
-            <Input readOnly>{text}</Input>
+            <Input value={text} readOnly />
           </>
         )}
       </Container>
