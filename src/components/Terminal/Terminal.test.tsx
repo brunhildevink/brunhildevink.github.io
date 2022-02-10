@@ -8,7 +8,6 @@ describe('Terminal component test', () => {
     render(<Terminal />)
     const inputElement = screen.getByLabelText('terminal input field')
     userEvent.type(inputElement, 'test input{enter}')
-    const outputElement = screen.getByText('test input')
-    expect(outputElement).toBeInTheDocument()
+    expect(screen.getByDisplayValue('test input')).toBeInTheDocument()
   })
 })

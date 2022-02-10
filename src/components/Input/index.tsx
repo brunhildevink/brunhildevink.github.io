@@ -9,7 +9,7 @@ interface Props {
 const Input: React.FC<Props> = ({ onSubmit }) => {
   const [textAreaValue, setTextAreaValue] = useState<string>('')
 
-  const handleUserKeyPress = (event: KeyboardEvent<HTMLTextAreaElement>) => {
+  const handleUserKeyPress = (event: KeyboardEvent<HTMLInputElement>) => {
     if (event.key === 'Enter' && !event.shiftKey) {
       event.preventDefault()
       onSubmit(textAreaValue)
@@ -20,7 +20,7 @@ const Input: React.FC<Props> = ({ onSubmit }) => {
   return (
     <Container>
       <NewLineIcon>{'~'}</NewLineIcon>
-      <TextArea
+      <InputField
         aria-label="terminal input field"
         autoFocus
         name="terminal-input"
@@ -39,7 +39,7 @@ const Container = styled.form`
   display: grid;
   grid-template-columns: auto 1fr;
   grid-gap: 8px;
-  height: 100%;
+  align-items: center;
 `
 
 const NewLineIcon = styled.p`
@@ -48,7 +48,7 @@ const NewLineIcon = styled.p`
   font-size: ${typography.fontSizeText}px;
 `
 
-const TextArea = styled.textarea`
+const InputField = styled.input`
   border: none;
   background-image: none;
   background-color: transparent;
