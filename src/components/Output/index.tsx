@@ -31,7 +31,7 @@ const Output: React.FC<Props> = ({ color, delay, type, text }) => {
         ) : (
           <>
             <NewLineIcon>{'~'}</NewLineIcon>
-            <Input value={text} readOnly />
+            <Input readOnly type="text" value={text} />
           </>
         )}
       </Container>
@@ -50,6 +50,7 @@ const Container = styled.div<{ type: OutputType; color: string }>`
   display: grid;
   grid-template-columns: auto 1fr;
   grid-gap: 8px;
+  align-items: center;
   `}
 
   margin-bottom: 12px;
@@ -62,7 +63,7 @@ const Text = styled.p`
   font-weight: ${typography.fontWeightMedium};
 `
 
-const Input = styled.textarea`
+const Input = styled.input`
   border: none;
   background-image: none;
   background-color: transparent;
