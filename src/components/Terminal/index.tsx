@@ -1,22 +1,22 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
 
-import { Input, TopBar, ResponseText } from '..'
+import { Input, Output, TopBar } from '..'
 import { colors } from '../../styles'
-import responseDataApi from '../../api'
-import { returnResponseData } from '../../utils'
-import { responseData } from '../../types'
+import terminalOutputData from '../../api'
+import { returnOutputResponses } from '../../utils'
+import { TerminalOutput } from '../../types'
 
 const Terminal: React.FC = () => {
-  const [data, setData] = useState<responseData[]>(responseDataApi)
+  const [data, setData] = useState<TerminalOutput[]>(terminalOutputData)
 
-  const renderResponses = data.map((response, index) => (
-    <ResponseText color={response.color} delay={response.delay} key={index} type={response.type} text={response.text} />
+  const renderOutput = data.map((response, index) => (
+    <Output color={response.color} delay={response.delay} key={index} type={response.type} text={response.text} />
   ))
 
-  const handleResponse = (input: string) => {
+  const handleInputResponse = (input: string) => {
     const newData = [...data]
-    returnResponseData(input).forEach((response) => newData.push(response))
+    returnOutputResponses(input).forEach((response) => newData.push(response))
     setData(newData)
   }
 
@@ -24,8 +24,8 @@ const Terminal: React.FC = () => {
     <Wrapper>
       <TopBar />
       <Container>
-        {renderResponses}
-        <Input onSubmit={handleResponse} />
+        {renderOutput}
+        <Input onSubmit={handleInputResponse} />
       </Container>
     </Wrapper>
   )

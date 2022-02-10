@@ -1,31 +1,31 @@
-import { responseData, responseType } from '../types'
+import { TerminalOutput, OutputType } from '../types'
 import { colors } from '../styles'
 
-const responseDataApi: responseData[] = [
+const terminalOutputData: TerminalOutput[] = [
   {
     color: colors.menuRed,
     delay: 100,
     text: 'Busy compiling...',
-    type: responseType.OUTPUT,
+    type: OutputType.OUTPUT,
   },
   {
     color: colors.menuGreen,
     delay: 1000,
     text: 'Compiled successfully!',
-    type: responseType.OUTPUT,
+    type: OutputType.OUTPUT,
   },
   {
     color: colors.menuYellow,
     delay: 2000,
     text: 'Start navigating the website by typing the following commands:',
-    type: responseType.OUTPUT,
+    type: OutputType.OUTPUT,
   },
   {
     color: colors.menuYellow,
     delay: 2000,
     text: '[About me, Projects, Social links]',
-    type: responseType.OUTPUT,
+    type: OutputType.OUTPUT,
   },
 ]
 
-export default responseDataApi
+export default terminalOutputData

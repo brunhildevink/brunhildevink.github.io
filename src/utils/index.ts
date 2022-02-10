@@ -1,1 +1,1 @@
-export { default as returnResponseData } from './returnResponseData'
+export { default as returnOutputResponses } from './returnOutputResponses'

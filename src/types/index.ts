@@ -1,2 +1,2 @@
-export { default as responseData } from './responseData'
-export { default as responseType } from './responseType'
+export { default as OutputType } from './outputType'
+export { default as TerminalOutput } from './terminalOutputData'

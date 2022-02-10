@@ -66,11 +66,4 @@ const TextArea = styled.textarea`
   font-size: ${typography.fontSizeText}px;
   font-weight: ${typography.fontWeightMedium};
   color: ${colors.white};
-
-  &:before {
-    content: '>';
-    display: block;
-    width: 40px;
-    height: 40px;
-  }
 `

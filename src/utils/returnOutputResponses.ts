@@ -1,7 +1,7 @@
 import { colors } from '../styles'
-import { responseData, responseType } from '../types'
+import { TerminalOutput, OutputType } from '../types'
 
-const returnResponseData = (input: string) => {
+const returnOutputResponses = (input: string) => {
   let response: string
 
   if (input.toLowerCase() === 'about me') {
@@ -12,21 +12,21 @@ const returnResponseData = (input: string) => {
     response = 'command not found'
   }
 
-  const data: responseData[] = [
+  const data: TerminalOutput[] = [
     {
       color: colors.white,
       text: input,
-      type: responseType.INPUT,
+      type: OutputType.INPUT,
     },
     {
       color: colors.menuYellow,
       delay: 500,
       text: response,
-      type: responseType.OUTPUT,
+      type: OutputType.OUTPUT,
     },
   ]
 
   return data
 }
 
-export default returnResponseData
+export default returnOutputResponses

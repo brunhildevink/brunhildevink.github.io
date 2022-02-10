@@ -2,16 +2,16 @@ import React, { useEffect, useState, useRef } from 'react'
 import styled from 'styled-components'
 
 import { colors, font, typography } from '../../styles'
-import { responseType } from '../../types'
+import { OutputType } from '../../types'
 
 interface Props {
   color?: string
   delay?: number
-  type: responseType
+  type: OutputType
   text: string
 }
 
-const ResponseText: React.FC<Props> = ({ color, delay, type, text }) => {
+const Output: React.FC<Props> = ({ color, delay, type, text }) => {
   const delayRef = useRef(delay)
   const [shouldShow, setShouldShow] = useState<boolean>(delay ? false : true)
 
@@ -26,7 +26,7 @@ const ResponseText: React.FC<Props> = ({ color, delay, type, text }) => {
   if (shouldShow) {
     return (
       <Container type={type} color={color || colors.white}>
-        {type === responseType.OUTPUT ? (
+        {type === OutputType.OUTPUT ? (
           <Text>{text}</Text>
         ) : (
           <>
@@ -41,11 +41,11 @@ const ResponseText: React.FC<Props> = ({ color, delay, type, text }) => {
   }
 }
 
-export default ResponseText
+export default Output
 
-const Container = styled.div<{ type: responseType; color: string }>`
+const Container = styled.div<{ type: OutputType; color: string }>`
   ${({ type }) =>
-    type === responseType.INPUT &&
+    type === OutputType.INPUT &&
     `
   display: grid;
   grid-template-columns: auto 1fr;
