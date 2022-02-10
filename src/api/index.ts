@@ -15,7 +15,7 @@ const terminalOutputData: TerminalOutput[] = [
     type: OutputType.OUTPUT,
   },
   {
-    color: colors.menuYellow,
+    color: colors.white,
     delay: 2000,
     text: 'You can now start navigating the website by typing the following commands:',
     type: OutputType.OUTPUT,

@@ -1,5 +1,6 @@
 import React, { useEffect, useState, useRef } from 'react'
 import styled from 'styled-components'
+import DOMPurify from 'dompurify'
 
 import { colors, font, typography } from '../../styles'
 import { OutputType } from '../../types'
@@ -14,6 +15,7 @@ interface Props {
 const Output: React.FC<Props> = ({ color, delay, type, text }) => {
   const delayRef = useRef(delay)
   const [shouldShow, setShouldShow] = useState<boolean>(delay ? false : true)
+  const purifiedHTML = DOMPurify.sanitize(text, { ADD_ATTR: ['target'], USE_PROFILES: { html: true } })
 
   useEffect(() => {
     if (delayRef.current) {
@@ -27,7 +29,7 @@ const Output: React.FC<Props> = ({ color, delay, type, text }) => {
     return (
       <Container type={type} color={color || colors.white}>
         {type === OutputType.OUTPUT ? (
-          <p>{text}</p>
+          <OutputValue dangerouslySetInnerHTML={{ __html: purifiedHTML }} />
         ) : (
           <>
             <NewLineIcon>{'~'}</NewLineIcon>
@@ -60,6 +62,12 @@ const Container = styled.div<{ type: OutputType; color: string }>`
     font-family: ${font};
     font-size: ${typography.fontSizeText}px;
     font-weight: ${typography.fontWeightRegular};
+  }
+`
+
+const OutputValue = styled.div`
+  a {
+    color: ${colors.white};
   }
 `
 

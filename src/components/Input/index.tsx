@@ -65,6 +65,6 @@ const InputField = styled.input`
   height: 100%;
   font-family: ${font};
   font-size: ${typography.fontSizeText}px;
-  font-weight: ${typography.fontWeightMedium};
+  font-weight: ${typography.fontWeightRegular};
   color: ${colors.white};
 `
