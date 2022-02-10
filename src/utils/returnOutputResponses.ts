@@ -7,7 +7,8 @@ const returnOutputResponses = (input: string) => {
   if (input.toLowerCase() === 'about me') {
     response = "My name is Brunhilde. I'm a 27 year old developer from the Netherlands."
   } else if (input.toLowerCase() === 'social links') {
-    response = 'github: brunhildevink, linkedIn: brunhilde vink'
+    response =
+      '<a target="_blank" href="https://github.com/brunhildevink">Github</a> <a target="_blank" href="https://linkedin.com/in/brunhilde-vink">linkedIn</a>'
   } else if (input.length === 0) {
     response = ''
   } else if (input.toLowerCase() === 'projects') {
