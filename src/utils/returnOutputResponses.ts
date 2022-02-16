@@ -3,17 +3,18 @@ import { TerminalOutput, OutputType } from '../types'
 
 const returnOutputResponses = (input: string) => {
   let response: string
+  const inputLowerCase = input.toLowerCase()
 
-  if (input.toLowerCase() === 'about me') {
+  if (inputLowerCase === 'about me') {
     response = "My name is Brunhilde. I'm a 27 year old developer from the Netherlands."
-  } else if (input.toLowerCase() === 'social links') {
+  } else if (inputLowerCase === 'social links') {
     response =
       '<a target="_blank" href="https://github.com/brunhildevink">Github</a> <a target="_blank" href="https://linkedin.com/in/brunhilde-vink">linkedIn</a>'
-  } else if (input.length === 0) {
+  } else if (inputLowerCase.length === 0) {
     response = ''
-  } else if (input.toLowerCase() === 'projects') {
+  } else if (inputLowerCase === 'projects') {
     response = 'I will display some of my projects on here in the near future. Stay tuned!'
-  } else if (input.toLowerCase().includes('hello') || input.toLowerCase().includes('hi')) {
+  } else if (inputLowerCase.includes('hello') || inputLowerCase.includes('hi')) {
     response = 'hello! :)'
   } else {
     response = `command not found: ${input}`
