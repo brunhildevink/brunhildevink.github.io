@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useRef, useEffect } from 'react'
 import styled from 'styled-components'
 
 import { Input, Output, TopBar } from '..'
@@ -9,9 +9,27 @@ import { TerminalOutput } from '../../types'
 
 const Terminal: React.FC = () => {
   const [data, setData] = useState<TerminalOutput[]>(terminalOutputData)
+  const containerRef = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    scrollToBottom()
+  }, [data])
+
+  const scrollToBottom = () => {
+    if (containerRef && containerRef.current) {
+      containerRef.current.scrollTop = containerRef.current.scrollHeight
+    }
+  }
 
   const renderOutput = data.map((response, index) => (
-    <Output color={response.color} delay={response.delay} key={index} type={response.type} text={response.text} />
+    <Output
+      color={response.color}
+      delay={response.delay}
+      key={index}
+      type={response.type}
+      text={response.text}
+      updateScrollTop={scrollToBottom}
+    />
   ))
 
   const handleInputResponse = (input: string) => {
@@ -23,7 +41,7 @@ const Terminal: React.FC = () => {
   return (
     <Wrapper>
       <TopBar />
-      <Container>
+      <Container ref={containerRef}>
         {renderOutput}
         <Input onSubmit={handleInputResponse} />
       </Container>
