@@ -10,9 +10,10 @@ interface Props {
   delay?: number
   type: OutputType
   text: string
+  updateScrollTop: () => void
 }
 
-const Output: React.FC<Props> = ({ color, delay, type, text }) => {
+const Output: React.FC<Props> = ({ color, delay, type, text, updateScrollTop }) => {
   const delayRef = useRef(delay)
   const [shouldShow, setShouldShow] = useState<boolean>(delay ? false : true)
   const purifiedHTML = DOMPurify.sanitize(text, { ADD_ATTR: ['target'], USE_PROFILES: { html: true } })
@@ -21,6 +22,7 @@ const Output: React.FC<Props> = ({ color, delay, type, text }) => {
     if (delayRef.current) {
       setTimeout(() => {
         setShouldShow(true)
+        updateScrollTop()
       }, delayRef.current)
     }
   }, [])
