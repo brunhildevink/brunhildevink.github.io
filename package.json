@@ -22,7 +22,11 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --coverage --watchAll",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "prepare": "husky install",
+    "lint": "npm run lint:scss && npm run lint:ts",
+    "lint:scss": "stylelint '**/*.tsx'",
+    "lint:ts": "eslint ./src --ext ts,tsx"
   },
   "eslintConfig": {
     "extends": [
@@ -56,6 +60,15 @@
     "@testing-library/user-event": "^13.5.0",
     "@types/dompurify": "^2.3.3",
     "@types/styled-components": "^5.1.22",
-    "jest-watch-typeahead": "^0.6.5"
+    "husky": "^7.0.4",
+    "jest-watch-typeahead": "^0.6.5",
+    "prettier": "^2.5.1",
+    "stylelint": "^13.13.1",
+    "stylelint-config-prettier": "^9.0.3",
+    "stylelint-config-recommended": "^3.0.0",
+    "stylelint-config-standard": "^25.0.0",
+    "stylelint-config-standard-scss": "^3.0.0",
+    "stylelint-config-styled-components": "^0.1.1",
+    "stylelint-processor-styled-components": "^1.10.0"
   }
 }

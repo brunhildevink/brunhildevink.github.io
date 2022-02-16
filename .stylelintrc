@@ -1,0 +1,13 @@
+{
+  "rules": {
+    "no-empty-source": null,
+    "at-rule-no-unknown": null
+  },
+  "processors": [
+    "stylelint-processor-styled-components"
+  ],
+  "extends": [
+    "stylelint-config-recommended",
+    "stylelint-config-styled-components"
+  ]
+}
