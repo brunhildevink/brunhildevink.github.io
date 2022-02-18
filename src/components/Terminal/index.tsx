@@ -4,7 +4,7 @@ import styled from 'styled-components'
 import { Input, Output, TopBar } from '..'
 import { colors } from '../../styles'
 import terminalOutputData from '../../api'
-import { returnOutputResponses } from '../../utils'
+import { drag, returnOutputResponses } from '../../utils'
 import { TerminalOutput } from '../../types'
 
 const Terminal: React.FC = () => {
@@ -14,6 +14,10 @@ const Terminal: React.FC = () => {
   useEffect(() => {
     scrollToBottom()
   }, [data])
+
+  useEffect(() => {
+    drag()
+  }, [])
 
   const scrollToBottom = () => {
     if (containerRef && containerRef.current) {
@@ -39,7 +43,7 @@ const Terminal: React.FC = () => {
   }
 
   return (
-    <Wrapper>
+    <Wrapper id="draggable">
       <TopBar />
       <Container ref={containerRef}>
         {renderOutput}
@@ -56,9 +60,9 @@ const Wrapper = styled.div`
   max-width: 600px;
   height: 440px;
   box-shadow: 5px 14px 34px 10px rgba(0, 0, 0, 0.24);
-  margin: 0 auto;
-  transform: translateY(25%);
-  user-select: none;
+  position: absolute;
+  top: 50px;
+  left: 50px;
 `
 
 const Container = styled.div`
