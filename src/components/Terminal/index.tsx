@@ -2,7 +2,7 @@ import React, { useState, useRef, useEffect } from 'react'
 import styled from 'styled-components'
 
 import { Input, Output, TopBar } from '..'
-import { colors } from '../../styles'
+import { colors, breakpoints } from '../../styles'
 import terminalOutputData from '../../api'
 import { drag, returnOutputResponses } from '../../utils'
 import { TerminalOutput } from '../../types'
@@ -66,9 +66,14 @@ const Wrapper = styled.div<{ wrapperWidth: number }>`
   max-width: 600px;
   height: 440px;
   box-shadow: 5px 14px 34px 10px rgba(0, 0, 0, 0.24);
-  position: absolute;
-  top: calc(50% - 220px);
-  left: calc(50% - ${({ wrapperWidth }) => wrapperWidth / 2}px);
+  margin: 40px auto;
+
+  @media ${breakpoints.md} {
+    position: absolute;
+    top: calc(50% - 220px);
+    left: calc(50% - ${({ wrapperWidth }) => wrapperWidth / 2}px);
+    margin: 0;
+  }
 `
 
 const Container = styled.div`
