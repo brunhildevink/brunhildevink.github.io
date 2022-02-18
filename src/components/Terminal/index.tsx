@@ -19,7 +19,10 @@ const Terminal: React.FC = () => {
 
   useEffect(() => {
     drag()
-    if (wrapperRef.current) setWrapperWidth(wrapperRef.current.clientWidth)
+
+    if (wrapperRef.current) {
+      setWrapperWidth(wrapperRef.current.clientWidth)
+    }
   }, [])
 
   const scrollToBottom = () => {
@@ -46,7 +49,7 @@ const Terminal: React.FC = () => {
   }
 
   return (
-    <Wrapper id="draggable" wrapperWidth={wrapperWidth} ref={wrapperRef}>
+    <Wrapper id="draggable" ref={wrapperRef} wrapperWidth={wrapperWidth}>
       <TopBar />
       <Container ref={containerRef}>
         {renderOutput}
