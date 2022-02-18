@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 
 import { MenuButton, Icons } from '..'
-import { colors, typography } from '../../styles'
+import { breakpoints, colors, typography } from '../../styles'
 
 const TopBar: React.FC = () => {
   return (
@@ -31,7 +31,10 @@ const Container = styled.div`
   border-bottom: 0px transparent;
   border-top-left-radius: 8px;
   border-top-right-radius: 8px;
-  cursor: grab;
+
+  @media ${breakpoints.md} {
+    cursor: grab;
+  }
 `
 
 const ButtonContainer = styled.div`
