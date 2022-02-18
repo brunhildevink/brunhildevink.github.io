@@ -6,7 +6,7 @@ import { colors, typography } from '../../styles'
 
 const TopBar: React.FC = () => {
   return (
-    <Container>
+    <Container id="top-bar">
       <ButtonContainer>
         <MenuButton ariaLabel="close-terminal" color={colors.menuRed} icon={Icons.Expand} />
         <MenuButton ariaLabel="minimize-terminal" color={colors.menuYellow} icon={Icons.Expand} />
@@ -45,4 +45,6 @@ const Title = styled.p`
   font-weight: ${typography.fontWeightBold};
   color: ${colors.white};
   font-size: ${typography.fontSizeLabel}px;
+  user-select: none;
+  pointer-events: none;
 `

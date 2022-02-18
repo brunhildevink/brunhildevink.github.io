@@ -32,4 +32,9 @@ const GlobalStyle = createGlobalStyle`
       box-sizing: border-box;
     }
   }
+
+  .no-select {
+    user-select: none;
+  }
+  
 `

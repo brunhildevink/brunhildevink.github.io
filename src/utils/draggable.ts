@@ -1,5 +1,6 @@
 const drag = () => {
   const draggable = document.getElementById('draggable')
+  const topBar = document.getElementById('top-bar')
 
   let isMouseDown = false
   let initX = 0
@@ -7,8 +8,9 @@ const drag = () => {
   let height = draggable ? draggable.offsetHeight : 0
   let width = draggable ? draggable.offsetWidth : 0
 
-  if (draggable) {
-    draggable.addEventListener('mousedown', function (e) {
+  if (draggable && topBar) {
+    topBar.addEventListener('mousedown', function (e) {
+      document.body.classList.add('no-select')
       isMouseDown = true
       initX = e.offsetX
       initY = e.offsetY
@@ -39,8 +41,9 @@ const drag = () => {
     }
   })
 
-  if (draggable) {
-    draggable.addEventListener('mouseup', function () {
+  if (topBar) {
+    topBar.addEventListener('mouseup', function () {
+      document.body.classList.remove('no-select')
       isMouseDown = false
     })
   }
