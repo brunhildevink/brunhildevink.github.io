@@ -9,6 +9,8 @@ import { TerminalOutput } from '../../types'
 
 const Terminal: React.FC = () => {
   const [data, setData] = useState<TerminalOutput[]>(terminalOutputData)
+  const [wrapperWidth, setWrapperWidth] = useState<number>(0)
+  const wrapperRef = useRef<HTMLDivElement>(null)
   const containerRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
@@ -17,6 +19,7 @@ const Terminal: React.FC = () => {
 
   useEffect(() => {
     drag()
+    if (wrapperRef.current) setWrapperWidth(wrapperRef.current.clientWidth)
   }, [])
 
   const scrollToBottom = () => {
@@ -43,7 +46,7 @@ const Terminal: React.FC = () => {
   }
 
   return (
-    <Wrapper id="draggable">
+    <Wrapper id="draggable" wrapperWidth={wrapperWidth} ref={wrapperRef}>
       <TopBar />
       <Container ref={containerRef}>
         {renderOutput}
@@ -55,14 +58,14 @@ const Terminal: React.FC = () => {
 
 export default Terminal
 
-const Wrapper = styled.div`
+const Wrapper = styled.div<{ wrapperWidth: number }>`
   width: 80%;
   max-width: 600px;
   height: 440px;
   box-shadow: 5px 14px 34px 10px rgba(0, 0, 0, 0.24);
   position: absolute;
-  top: 50px;
-  left: 50px;
+  top: calc(50% - 220px);
+  left: calc(50% - ${({ wrapperWidth }) => wrapperWidth / 2}px);
 `
 
 const Container = styled.div`
