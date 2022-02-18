@@ -2,18 +2,28 @@ import React, { useState, useRef, useEffect } from 'react'
 import styled from 'styled-components'
 
 import { Input, Output, TopBar } from '..'
-import { colors } from '../../styles'
+import { colors, breakpoints } from '../../styles'
 import terminalOutputData from '../../api'
-import { returnOutputResponses } from '../../utils'
+import { drag, returnOutputResponses } from '../../utils'
 import { TerminalOutput } from '../../types'
 
 const Terminal: React.FC = () => {
   const [data, setData] = useState<TerminalOutput[]>(terminalOutputData)
+  const [wrapperWidth, setWrapperWidth] = useState<number>(0)
+  const wrapperRef = useRef<HTMLDivElement>(null)
   const containerRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
     scrollToBottom()
   }, [data])
+
+  useEffect(() => {
+    drag()
+
+    if (wrapperRef.current) {
+      setWrapperWidth(wrapperRef.current.clientWidth)
+    }
+  }, [])
 
   const scrollToBottom = () => {
     if (containerRef && containerRef.current) {
@@ -39,7 +49,7 @@ const Terminal: React.FC = () => {
   }
 
   return (
-    <Wrapper>
+    <Wrapper id="draggable" ref={wrapperRef} wrapperWidth={wrapperWidth}>
       <TopBar />
       <Container ref={containerRef}>
         {renderOutput}
@@ -51,14 +61,19 @@ const Terminal: React.FC = () => {
 
 export default Terminal
 
-const Wrapper = styled.div`
+const Wrapper = styled.div<{ wrapperWidth: number }>`
   width: 80%;
   max-width: 600px;
   height: 440px;
   box-shadow: 5px 14px 34px 10px rgba(0, 0, 0, 0.24);
-  margin: 0 auto;
-  transform: translateY(25%);
-  user-select: none;
+  margin: 40px auto;
+
+  @media ${breakpoints.md} {
+    position: absolute;
+    top: calc(50% - 220px);
+    left: calc(50% - ${({ wrapperWidth }) => wrapperWidth / 2}px);
+    margin: 0;
+  }
 `
 
 const Container = styled.div`

@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 import styled, { createGlobalStyle } from 'styled-components'
 
 import { Home } from './pages'
-import { colors } from './styles'
+import image from './assets/images/background.jpeg'
 import './styles/reset.css'
 
 const App: React.FC = () => {
@@ -25,11 +25,16 @@ const Wrapper = styled.div``
 
 const GlobalStyle = createGlobalStyle`
   body {
-    background: ${colors.black};
+    background: url(${image}) center center no-repeat;
     height: 100vh;
 
     * {
       box-sizing: border-box;
     }
   }
+
+  .no-select {
+    user-select: none;
+  }
+  
 `
