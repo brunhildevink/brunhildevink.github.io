@@ -6,6 +6,7 @@ import { colors, font, typography } from '../../styles'
 import { OutputType } from '../../types'
 
 interface Props {
+  callback?: () => any
   color?: string
   delay?: number
   type: OutputType
@@ -13,7 +14,7 @@ interface Props {
   updateScrollTop: () => void
 }
 
-const Output: React.FC<Props> = ({ color, delay, type, text, updateScrollTop }) => {
+const Output: React.FC<Props> = ({ callback, color, delay, type, text, updateScrollTop }) => {
   const delayRef = useRef(delay)
   const [shouldShow, setShouldShow] = useState<boolean>(delay ? false : true)
   const purifiedHTML = DOMPurify.sanitize(text, { ADD_ATTR: ['target'], USE_PROFILES: { html: true } })
@@ -24,6 +25,10 @@ const Output: React.FC<Props> = ({ color, delay, type, text, updateScrollTop }) 
         setShouldShow(true)
         updateScrollTop()
       }, delayRef.current)
+    }
+
+    if (callback) {
+      callback()
     }
   }, [])
 

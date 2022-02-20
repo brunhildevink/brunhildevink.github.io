@@ -23,7 +23,7 @@ const terminalOutputData: TerminalOutput[] = [
   {
     color: colors.menuYellow,
     delay: 2000,
-    text: '[About me], [Projects], [Social links]',
+    text: '[About me], [Projects], [Social links], [Download resume]',
     type: OutputType.OUTPUT,
   },
 ]

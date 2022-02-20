@@ -33,6 +33,7 @@ const Terminal: React.FC = () => {
 
   const renderOutput = data.map((response, index) => (
     <Output
+      callback={response.callback}
       color={response.color}
       delay={response.delay}
       key={index}

@@ -2,8 +2,10 @@ import { colors } from '../styles'
 import { TerminalOutput, OutputType } from '../types'
 
 const returnOutputResponses = (input: string) => {
-  let response: string
   const inputLowerCase = input.toLowerCase()
+
+  let response: string
+  let callback = () => {}
 
   if (inputLowerCase === 'about me') {
     response = "My name is Brunhilde. I'm a 27 year old developer from the Netherlands."
@@ -14,6 +16,9 @@ const returnOutputResponses = (input: string) => {
     response = ''
   } else if (inputLowerCase === 'projects') {
     response = 'I will display some of my projects on here in the near future. Stay tuned!'
+  } else if (inputLowerCase === 'download resume') {
+    response = 'Downloading resume...'
+    callback = () => window.open('resume.pdf')
   } else if (inputLowerCase.includes('hello') || inputLowerCase.includes('hi')) {
     response = 'hello! :)'
   } else {
@@ -27,6 +32,7 @@ const returnOutputResponses = (input: string) => {
       type: OutputType.INPUT,
     },
     {
+      callback: callback,
       color: colors.white,
       delay: 500,
       text: response,
