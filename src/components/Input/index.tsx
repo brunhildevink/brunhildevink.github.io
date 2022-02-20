@@ -22,6 +22,7 @@ const Input: React.FC<Props> = ({ onSubmit }) => {
       <NewLineIcon>{'~'}</NewLineIcon>
       <InputField
         aria-label="terminal input field"
+        autoComplete="off"
         autoFocus
         name="terminal-input"
         onChange={(event) => setTextAreaValue(event.target.value)}
