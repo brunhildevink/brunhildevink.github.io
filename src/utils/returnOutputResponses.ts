@@ -1,9 +1,11 @@
 import { colors } from '../styles'
 import { TerminalOutput, OutputType } from '../types'
+import githubIcon from '../assets/images/github.svg'
+import linkedinIcon from '../assets/images/linkedin.svg'
+import resume from '../assets/documents/resume.pdf'
 
-const openResume = (): string => {
-  const url = '/resume.pdf'
-  const newWindow = window.open(url, 'main')
+const openResume = () => {
+  const newWindow = window.open(resume, 'main')
 
   if (newWindow == null) {
     return 'Failed to open resume, please try again!'
@@ -14,7 +16,7 @@ const openResume = (): string => {
 
 const returnOutputResponses = (input: string) => {
   const inputLowerCase = input.toLowerCase()
-
+  const anchorTagStyle = `display: grid; grid-template-columns: 20px 40px; align-items: center; margin-bottom: 8px;`
   const output: TerminalOutput[] = [
     {
       color: colors.white,
@@ -23,50 +25,32 @@ const returnOutputResponses = (input: string) => {
     },
   ]
 
-  if (inputLowerCase === 'about me') {
-    output.push({
-      text: "My name is Brunhilde. I'm a 27 year old developer from the Netherlands.",
-      type: OutputType.OUTPUT,
-    })
-  } else if (inputLowerCase === 'social links') {
-    output.push({
-      text: '<a target="_blank" href="https://github.com/brunhildevink">Github</a> <a target="_blank" href="https://linkedin.com/in/brunhilde-vink">linkedIn</a>',
-      type: OutputType.OUTPUT,
-    })
-  } else if (inputLowerCase.length === 0) {
-    output.push({
-      text: '',
-      type: OutputType.OUTPUT,
-    })
-  } else if (inputLowerCase === 'projects') {
-    output.push({
-      text: 'I will display some of my projects on here in the near future. Stay tuned!',
-      type: OutputType.OUTPUT,
-    })
-  } else if (inputLowerCase === 'download resume') {
-    const response = openResume()
+  switch (inputLowerCase) {
+    case 'about me':
+      output.push({ delay: 500, text: "My name is Brunhilde. I'm a 27 year old developer from the Netherlands." })
+      break
+    case 'social links':
+      output.push({
+        delay: 500,
+        text: `<a style="${anchorTagStyle}" target="_blank" href="https://github.com/brunhildevink"><img src=${githubIcon} />Github</a> <a style="${anchorTagStyle}" target="_blank" href="https://linkedin.com/in/brunhilde-vink"><img src=${linkedinIcon} />LinkedIn</a>`,
+      })
+      break
+    case 'projects':
+      output.push({ delay: 500, text: 'I will showcase some of my projects on here in the near future. Stay tuned!' })
+      break
+    case 'download resume':
+      output.push({ delay: 500, text: 'Opening resume...' })
 
-    output.push({
-      text: 'Downloading resume...',
-      type: OutputType.OUTPUT,
-    })
+      const response = openResume()
 
-    output.push({
-      color: colors.menuGreen,
-      delay: 500,
-      text: response,
-      type: OutputType.OUTPUT,
-    })
-  } else if (inputLowerCase.includes('hello') || inputLowerCase.includes('hi')) {
-    output.push({
-      text: 'hello! :)',
-      type: OutputType.OUTPUT,
-    })
-  } else {
-    output.push({
-      text: `command not found: ${input}`,
-      type: OutputType.OUTPUT,
-    })
+      output.push({
+        color: colors.menuGreen,
+        delay: 1000,
+        text: response,
+      })
+      break
+    default:
+      output.push({ text: `command not found: ${input}` })
   }
 
   return output

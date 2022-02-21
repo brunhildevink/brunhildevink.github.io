@@ -9,12 +9,12 @@ interface Props {
   callback?: () => any
   color?: string
   delay?: number
-  type: OutputType
+  type?: OutputType
   text: string
   updateScrollTop: () => void
 }
 
-const Output: React.FC<Props> = ({ callback, color, delay, type, text, updateScrollTop }) => {
+const Output: React.FC<Props> = ({ callback, color, delay, type = OutputType.OUTPUT, text, updateScrollTop }) => {
   const delayRef = useRef(delay)
   const [shouldShow, setShouldShow] = useState<boolean>(delay ? false : true)
   const purifiedHTML = DOMPurify.sanitize(text, { ADD_ATTR: ['target'], USE_PROFILES: { html: true } })

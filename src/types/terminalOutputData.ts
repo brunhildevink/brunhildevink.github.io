@@ -5,5 +5,5 @@ export default interface TerminalOutput {
   color?: string
   delay?: number
   text: string
-  type: responseType
+  type?: responseType
 }
