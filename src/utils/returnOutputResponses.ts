@@ -16,16 +16,9 @@ const returnOutputResponses = (input: string) => {
     response = ''
   } else if (inputLowerCase === 'projects') {
     response = 'I will display some of my projects on here in the near future. Stay tuned!'
-  } else if (inputLowerCase === 'd') {
+  } else if (inputLowerCase === 'download resume') {
     response = 'Downloading resume...'
-    callback = () => {
-      const link = document.createElement('a')
-      link.download = 'resume'
-      link.href = '/resume.pdf'
-      document.body.appendChild(link)
-      link.click()
-      document.body.removeChild(link)
-    }
+    callback = () => window.open('resume.pdf')
   } else if (inputLowerCase.includes('hello') || inputLowerCase.includes('hi')) {
     response = 'hello! :)'
   } else {
