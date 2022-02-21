@@ -1,6 +1,17 @@
 import { colors } from '../styles'
 import { TerminalOutput, OutputType } from '../types'
 
+const openResume = (): string => {
+  const url = '/resume.pdf'
+  const newWindow = window.open(url, 'main')
+
+  if (newWindow == null) {
+    return 'Failed to open resume, please try again!'
+  } else {
+    return 'Opening resume successful!'
+  }
+}
+
 const returnOutputResponses = (input: string) => {
   const inputLowerCase = input.toLowerCase()
 
@@ -18,7 +29,10 @@ const returnOutputResponses = (input: string) => {
     response = 'I will display some of my projects on here in the near future. Stay tuned!'
   } else if (inputLowerCase === 'download resume') {
     response = 'Downloading resume...'
-    callback = () => window.open('resume.pdf')
+    callback = () => {
+      const response = openResume()
+      console.log(response)
+    }
   } else if (inputLowerCase.includes('hello') || inputLowerCase.includes('hi')) {
     response = 'hello! :)'
   } else {
