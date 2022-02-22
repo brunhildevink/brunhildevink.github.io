@@ -1,7 +1,7 @@
-import { TerminalOutput, OutputType } from '../types'
+import { OutputData, OutputType } from '../types'
 import { colors } from '../styles'
 
-const terminalOutputData: TerminalOutput[] = [
+const terminalOutputData: OutputData[] = [
   {
     color: colors.menuRed,
     delay: 100,

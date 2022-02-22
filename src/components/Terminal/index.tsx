@@ -5,10 +5,10 @@ import { Input, Output, TopBar } from '..'
 import { colors, breakpoints } from '../../styles'
 import terminalOutputData from '../../api'
 import { drag, returnOutputResponses } from '../../utils'
-import { TerminalOutput } from '../../types'
+import { OutputData } from '../../types'
 
 const Terminal: React.FC = () => {
-  const [data, setData] = useState<TerminalOutput[]>(terminalOutputData)
+  const [data, setData] = useState<OutputData[]>(terminalOutputData)
   const [wrapperWidth, setWrapperWidth] = useState<number>(0)
   const wrapperRef = useRef<HTMLDivElement>(null)
   const containerRef = useRef<HTMLDivElement>(null)

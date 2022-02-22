@@ -1,29 +1,13 @@
-import { colors } from '../styles'
-import { CommandAnswers, CommandType as Command, OutputType, TerminalOutput } from '../types'
+import { CommandAnswers, CommandTypes as Command, OutputType, OutputData } from '../types'
 import resume from '../assets/documents/resume.pdf'
-
-const openResume = () => {
-  const newWindow = window.open(resume, 'main')
-
-  if (newWindow === null) {
-    return { color: colors.menuGreen, delay: 1000, text: CommandAnswers.DOWNLOAD_RESUME_ERROR }
-  } else {
-    return { color: colors.menuGreen, delay: 1000, text: CommandAnswers.DOWNLOAD_RESUME_SUCCESS }
-  }
-}
+import { openFile } from '.'
 
 const returnOutputResponses = (input: string) => {
   const delay = 500
-  const inputUppercase = input.split(' ').join('_').toUpperCase()
-  const output: TerminalOutput[] = [
-    {
-      color: colors.white,
-      text: input,
-      type: OutputType.INPUT,
-    },
-  ]
+  const INPUT = input.split(' ').join('_').toUpperCase()
+  const output: OutputData[] = [{ text: input, type: OutputType.INPUT }]
 
-  switch (inputUppercase) {
+  switch (INPUT) {
     case Command.ABOUT_ME:
       output.push({ delay, text: CommandAnswers.ABOUT_ME })
       break
@@ -31,7 +15,7 @@ const returnOutputResponses = (input: string) => {
       output.push({ delay, text: CommandAnswers.SOCIAL_LINKS })
       break
     case Command.DOWNLOAD_RESUME:
-      const response = openResume()
+      const response = openFile(resume)
       output.push({ delay, text: CommandAnswers.DOWNLOAD_RESUME })
       output.push(response)
       break
