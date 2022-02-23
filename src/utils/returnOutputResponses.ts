@@ -1,11 +1,11 @@
-import { CommandAnswers, CommandTypes as Command, OutputType, OutputData } from '../types'
+import { CommandAnswers, CommandTypes as Command, OutputData } from '../types'
 import resume from '../assets/documents/resume.pdf'
 import { openFile } from '.'
 
 const returnOutputResponses = (input: string) => {
   const delay = 500
   const INPUT = input.split(' ').join('_').toUpperCase()
-  const output: OutputData[] = [{ text: input, type: OutputType.INPUT }]
+  const output: OutputData[] = [{ text: input, type: 'USER' }]
 
   switch (INPUT) {
     case Command.ABOUT_ME:

@@ -14,7 +14,7 @@ interface Props {
   updateScrollTop: () => void
 }
 
-const Output: React.FC<Props> = ({ callback, color, delay, type = OutputType.OUTPUT, text, updateScrollTop }) => {
+const Output: React.FC<Props> = ({ callback, color, delay, type = 'SYSTEM', text, updateScrollTop }) => {
   const delayRef = useRef(delay)
   const [shouldShow, setShouldShow] = useState<boolean>(delay ? false : true)
   const purifiedHTML = DOMPurify.sanitize(text, { ADD_ATTR: ['target'], USE_PROFILES: { html: true } })
@@ -34,8 +34,8 @@ const Output: React.FC<Props> = ({ callback, color, delay, type = OutputType.OUT
 
   if (shouldShow) {
     return (
-      <Container type={type} color={color || colors.white}>
-        {type === OutputType.OUTPUT ? (
+      <Container outputType={type} color={color || colors.white}>
+        {type === 'SYSTEM' ? (
           <OutputValue dangerouslySetInnerHTML={{ __html: purifiedHTML }} />
         ) : (
           <>
@@ -52,9 +52,9 @@ const Output: React.FC<Props> = ({ callback, color, delay, type = OutputType.OUT
 
 export default Output
 
-const Container = styled.div<{ type: OutputType; color: string }>`
-  ${({ type }) =>
-    type === OutputType.INPUT &&
+const Container = styled.div<{ outputType: OutputType; color: string }>`
+  ${({ outputType }) =>
+    outputType === 'USER' &&
     `
   display: grid;
   grid-template-columns: auto 1fr;

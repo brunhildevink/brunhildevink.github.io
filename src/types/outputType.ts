@@ -1,6 +1,3 @@
-enum OutputType {
-  'INPUT',
-  'OUTPUT',
-}
+type OutputType = 'SYSTEM' | 'USER'
 
 export default OutputType
