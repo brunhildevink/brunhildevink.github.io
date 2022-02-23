@@ -19,6 +19,9 @@ const returnOutputResponses = (input: string) => {
       output.push({ delay, text: CommandAnswers.DOWNLOAD_RESUME })
       output.push(response)
       break
+    case '':
+      output.push({ delay, text: '' })
+      break
     default:
       output.push({ text: `command not found: ${input}` })
   }
