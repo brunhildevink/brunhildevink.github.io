@@ -41,9 +41,10 @@ const Container = styled.form`
   grid-template-columns: auto 1fr;
   grid-gap: 8px;
   align-items: center;
+  height: 20px;
 `
 
-const NewLineIcon = styled.p`
+const NewLineIcon = styled.span`
   color: ${colors.white};
   font-weight: ${typography.fontWeightBold};
   font-size: ${typography.fontSizeText}px;
@@ -56,6 +57,7 @@ const InputField = styled.input`
   box-shadow: none;
   resize: none;
   overflow-y: hidden;
+  padding: 0;
 
   &:focus {
     outline: none;
