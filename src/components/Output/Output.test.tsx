@@ -34,4 +34,10 @@ describe('Output component test', () => {
     const element = screen.getByText('~')
     expect(element).toBeInTheDocument()
   })
+
+  test('Output should handle callback when prop "callback" is provided', async () => {
+    const mockFunction = jest.fn()
+    render(<Output callback={mockFunction} color="white" text="test" updateScrollTop={mockFunction} />)
+    expect(mockFunction).toHaveBeenCalled()
+  })
 })
