@@ -1,26 +1,40 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from 'react'
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
+import styled, { createGlobalStyle } from 'styled-components'
 
-function App() {
+import { Home } from './pages'
+import image from './assets/images/background.jpeg'
+import './styles/reset.css'
+
+const App: React.FC = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <Wrapper>
+      <GlobalStyle />
+      <Router>
+        <Routes>
+          <Route path="/" element={<Home />} />
+        </Routes>
+      </Router>
+    </Wrapper>
+  )
 }
 
-export default App;
+export default App
+
+const Wrapper = styled.div``
+
+const GlobalStyle = createGlobalStyle`
+  body {
+    background: url(${image}) center center no-repeat;
+    height: 100vh;
+
+    * {
+      box-sizing: border-box;
+    }
+  }
+
+  .no-select {
+    user-select: none;
+  }
+  
+`
