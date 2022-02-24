@@ -1,38 +1,29 @@
-import { colors } from '../styles'
-import { TerminalOutput, OutputType } from '../types'
+import { CommandAnswers, CommandTypes as Command, OutputData } from '../types'
+import resume from '../assets/documents/resume.pdf'
+import { openFile } from '.'
 
 const returnOutputResponses = (input: string) => {
-  let response: string
-  const inputLowerCase = input.toLowerCase()
+  const delay = 500
+  const INPUT = input.split(' ').join('_').toUpperCase()
+  const output: OutputData[] = [{ text: input, type: 'USER' }]
 
-  if (inputLowerCase === 'about me') {
-    response = "My name is Brunhilde. I'm a 27 year old developer from the Netherlands."
-  } else if (inputLowerCase === 'social links') {
-    response =
-      '<a target="_blank" href="https://github.com/brunhildevink">Github</a> <a target="_blank" href="https://linkedin.com/in/brunhilde-vink">linkedIn</a>'
-  } else if (inputLowerCase.length === 0) {
-    response = ''
-  } else if (inputLowerCase === 'projects') {
-    response = 'I will display some of my projects on here in the near future. Stay tuned!'
-  } else if (inputLowerCase.includes('hello') || inputLowerCase.includes('hi')) {
-    response = 'hello! :)'
-  } else {
-    response = `command not found: ${input}`
+  switch (INPUT) {
+    case Command.ABOUT_ME:
+      output.push({ delay, text: CommandAnswers.ABOUT_ME })
+      break
+    case Command.SOCIAL_LINKS:
+      output.push({ delay, text: CommandAnswers.SOCIAL_LINKS })
+      break
+    case Command.DOWNLOAD_RESUME:
+      const response = openFile(resume)
+      output.push({ delay, text: CommandAnswers.DOWNLOAD_RESUME })
+      output.push(response)
+      break
+    case '':
+      break
+    default:
+      output.push({ text: `command not found: ${input}` })
   }
-
-  const output: TerminalOutput[] = [
-    {
-      color: colors.white,
-      text: input,
-      type: OutputType.INPUT,
-    },
-    {
-      color: colors.white,
-      delay: 500,
-      text: response,
-      type: OutputType.OUTPUT,
-    },
-  ]
 
   return output
 }
