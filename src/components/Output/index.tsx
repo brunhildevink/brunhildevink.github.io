@@ -20,6 +20,7 @@ const Output: React.FC<Props> = ({ callback, color, delay, type = 'SYSTEM', text
   const updateScrollTopRef = useRef(updateScrollTop)
   const [shouldShow, setShouldShow] = useState<boolean>(delay ? false : true)
   const purifiedHTML = DOMPurify.sanitize(text, { ADD_ATTR: ['target'], USE_PROFILES: { html: true } })
+  const updateScrollTopRef = useRef(updateScrollTop)
 
   useEffect(() => {
     if (delayRef.current) {
