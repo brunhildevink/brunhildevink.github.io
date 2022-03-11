@@ -66,7 +66,6 @@ const Wrapper = styled.div<{ wrapperWidth: number }>`
   width: 80%;
   max-width: 600px;
   height: 440px;
-  box-shadow: 5px 14px 34px 10px rgba(0, 0, 0, 0.24);
   margin: 40px auto;
 
   @media ${breakpoints.md} {
@@ -87,4 +86,5 @@ const Container = styled.div`
   border-top: 0px transparent;
   border-bottom-left-radius: 8px;
   border-bottom-right-radius: 8px;
+  box-shadow: 5px 14px 34px 10px rgba(0, 0, 0, 0.24);
 `

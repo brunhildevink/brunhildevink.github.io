@@ -31,6 +31,7 @@ const Container = styled.div`
   border-bottom: 0px transparent;
   border-top-left-radius: 8px;
   border-top-right-radius: 8px;
+  box-shadow: 5px 14px 34px 10px rgba(0, 0, 0, 0.24);
 
   @media ${breakpoints.md} {
     cursor: grab;
