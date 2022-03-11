@@ -17,12 +17,13 @@ const Output: React.FC<Props> = ({ color, delay, type, text, updateScrollTop }) 
   const delayRef = useRef(delay)
   const [shouldShow, setShouldShow] = useState<boolean>(delay ? false : true)
   const purifiedHTML = DOMPurify.sanitize(text, { ADD_ATTR: ['target'], USE_PROFILES: { html: true } })
+  const updateScrollTopRef = useRef(updateScrollTop)
 
   useEffect(() => {
     if (delayRef.current) {
       setTimeout(() => {
         setShouldShow(true)
-        updateScrollTop()
+        updateScrollTopRef.current()
       }, delayRef.current)
     }
   }, [])
