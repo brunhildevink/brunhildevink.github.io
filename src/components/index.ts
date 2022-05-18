@@ -1,3 +1,5 @@
+export { default as Dock } from './Dock'
+export { default as DockItem } from './DockItem'
 export { default as Icons } from './Icon'
 export { default as Input } from './Input'
 export { default as MenuButton } from './MenuButton'
