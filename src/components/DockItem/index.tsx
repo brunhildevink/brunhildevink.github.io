@@ -12,7 +12,7 @@ interface Props {
 
 const MenuItem: React.FC<Props> = ({ image, showBackground = true, showDot = false, onClick }) => (
   <Wrapper>
-    <Container onClick={onClick} showBackground={showBackground} showDot={showDot}>
+    <Container disabled={!onClick} onClick={onClick} showBackground={showBackground} showDot={showDot}>
       <Image src={image} />
     </Container>
   </Wrapper>
@@ -34,13 +34,19 @@ const Container = styled.button<{ showBackground: boolean; showDot: boolean }>`
   border-radius: 14px;
   position: relative;
   transition: all 0.1s ease-in-out;
-  cursor: pointer;
   border: none;
 
-  &:hover {
-    width: 67px;
-    height: 67px;
-  }
+  ${({ onClick }) =>
+    onClick &&
+    `
+    cursor: pointer;
+
+    &:hover {
+      width: 67px;
+      height: 67px;
+    }
+      
+  `}
 
   ${({ showBackground }) =>
     showBackground &&

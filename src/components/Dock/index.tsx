@@ -28,4 +28,5 @@ const Wrapper = styled.span`
   border-radius: 24px;
   border: 1px solid ${colors.ashGrey};
   backdrop-filter: blur(1em);
+  padding-bottom: 8px;
 `
