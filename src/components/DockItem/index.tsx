@@ -64,7 +64,6 @@ const Container = styled.div<{ showBackground: boolean; showDot: boolean }>`
 const Image = styled.div<{ src: string }>`
   border-radius: 14px;
   background: url(${({ src }) => src}) no-repeat center center;
-  background-size: contain;
-  width: 100%;
+  background-size: 40px;
   height: 100%;
 `
