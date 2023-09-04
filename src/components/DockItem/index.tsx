@@ -28,12 +28,19 @@ const Wrapper = styled.div`
   flex-flow: wrap column;
 `
 
-const Container = styled.div<{ showBackground: boolean; showDot: boolean }>`
+const Container = styled.button<{ showBackground: boolean; showDot: boolean }>`
   width: 60px;
   height: 60px;
   border-radius: 14px;
-  margin-bottom: 8px;
   position: relative;
+  transition: all 0.1s ease-in-out;
+  cursor: pointer;
+  border: none;
+
+  &:hover {
+    width: 67px;
+    height: 67px;
+  }
 
   ${({ showBackground }) =>
     showBackground &&
@@ -64,6 +71,6 @@ const Container = styled.div<{ showBackground: boolean; showDot: boolean }>`
 const Image = styled.div<{ src: string }>`
   border-radius: 14px;
   background: url(${({ src }) => src}) no-repeat center center;
-  background-size: 40px;
+  background-size: 60%;
   height: 100%;
 `
